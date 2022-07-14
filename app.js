@@ -10,6 +10,9 @@ const dotenv = require('dotenv').config();
 // Require routes here
 const blogRoutes = require('./routes/blog');
 
+// Import db file
+const db = require('./data/database');
+
 // Initiate app
 const app = express();
 
