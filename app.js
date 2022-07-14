@@ -20,5 +20,13 @@ app.use(express.static('public'));
 // Middleware app.use()
 app.use(blogRoutes);
 
+// 500 Errors
+app.use((error, req, res, next) => {
+  // Default error handling function
+  // Will become active whenever any route / middleware crashes
+  console.log(error);
+  res.status(500).render('500');
+});
+
 // Listen
 app.listen(3000);
