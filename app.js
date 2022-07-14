@@ -38,6 +38,8 @@ app.use((error, req, res, next) => {
   res.status(500).render('500');
 });
 
-const { PORT } = process.env || 3000;
-// Listen
-app.listen(PORT);
+db.connectToDatabase().then(() => {
+  const { PORT } = process.env || 3000;
+  // Listen
+  app.listen(PORT);
+});
