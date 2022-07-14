@@ -12,6 +12,9 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Access CSS files
+app.use(express.static('public')); // Serve static files (e.g. CSS files)
+
 // Middleware app.use()
 app.use(blogRoutes);
 
