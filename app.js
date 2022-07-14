@@ -1,6 +1,11 @@
 // Initial set- up
 const express = require('express');
+
+// Get the path tool
 const path = require('path');
+
+// Use the dotenv module to hide passwords etc
+const dotenv = require('dotenv').config();
 
 // Require routes here
 const blogRoutes = require('./routes/blog');
@@ -30,5 +35,6 @@ app.use((error, req, res, next) => {
   res.status(500).render('500');
 });
 
+const { PORT } = process.env || 3000;
 // Listen
-app.listen(3000);
+app.listen(PORT);
