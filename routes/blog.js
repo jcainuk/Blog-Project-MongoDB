@@ -10,4 +10,8 @@ router.get('/posts', (req, res) => {
   res.render('posts-list');
 });
 
+router.get('/new-post', async (req, res) => {
+  res.render('create-post');
+});
+
 module.exports = router;
