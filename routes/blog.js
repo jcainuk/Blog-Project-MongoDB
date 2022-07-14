@@ -13,7 +13,10 @@ router.get('/posts', (req, res) => {
 });
 
 router.get('/new-post', async (req, res) => {
-  res.render('create-post');
+  const authors = await db.getDB().collection('authors').find().toArray();
+
+  // eslint-disable-next-line object-shorthand
+  res.render('create-post', { authors: authors });
 });
 
 module.exports = router;
