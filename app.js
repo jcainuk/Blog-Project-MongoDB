@@ -10,6 +10,8 @@ const app = express();
 
 // Activate EJS View Engines
 app.set('view engine', 'ejs');
+
+// Direct Express app to the views folder from root
 app.set('views', path.join(__dirname, 'views'));
 
 // Parse incoming request bodies
