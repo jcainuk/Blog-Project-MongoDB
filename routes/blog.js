@@ -80,7 +80,11 @@ router.get('/posts/:id/edit', async (req, res) => {
 
 router.post('/posts/:id/edit', async (req, res) => {
   const postId = new ObjectId(req.params.id);
-  const result = await db.getDB().collection('posts').updateOne({ _id: postId }, { $set: { title: req.body.title, summary: req.body.summary, body: req.body.content } });
+  const result = await db.getDB().collection('posts').updateOne({ _id: postId }, {
+    $set: {
+      title: req.body.title, summary: req.body.summary, body: req.body.content, date: new Date(),
+    },
+  });
 
   res.redirect('/posts');
 });
