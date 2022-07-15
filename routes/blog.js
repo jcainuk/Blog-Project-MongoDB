@@ -12,7 +12,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/posts', async (req, res) => {
-  const posts = await db.getDB().collection('posts').find().toArray();
+  const posts = await db
+    .getDB()
+    .collection('posts')
+    .find({}, { title: 1, summary: 1, 'author.name': 1 })
+    .toArray();
 
   res.render('posts-list');
 });
