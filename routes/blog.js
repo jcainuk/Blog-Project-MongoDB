@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
   res.redirect('/posts');
 });
 
-router.get('/posts', (req, res) => {
+router.get('/posts', async (req, res) => {
+  const posts = await db.getDB().collection('posts').find().toArray();
+
   res.render('posts-list');
 });
 
