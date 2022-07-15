@@ -66,4 +66,13 @@ router.get('/posts/:id', async (req, res) => {
   res.render('post-detail', { post });
 });
 
+router.get('/posts/:id/edit', async (req, res) => {
+  const postId = req.params.id;
+  const post = await db.getDB().collection('posts').findOne({ _id: new ObjectId(postId) }, { title: 1, summary: 1, body: 1 });
+
+  if (!post) {
+    return res.status(404).render('404');
+  }
+});
+
 module.exports = router;
