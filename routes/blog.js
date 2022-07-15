@@ -43,7 +43,7 @@ router.post('/posts', async (req, res) => {
     },
   };
   const result = await db.getDB().collection('posts').insertOne(newPost);
-  console.log(result);
+
   res.redirect('/posts');
 });
 
@@ -87,6 +87,12 @@ router.post('/posts/:id/edit', async (req, res) => {
   });
 
   res.redirect('/posts');
+});
+
+router.post('/posts/:id/delete', async (req, res) => {
+  const postId = new ObjectId(req.params.id);
+  const result = await db.getDB().collection('posts').deleteOne({ _id: postId });
+  res.redirect('posts');
 });
 
 module.exports = router;
