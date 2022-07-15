@@ -18,7 +18,8 @@ router.get('/posts', async (req, res) => {
     .find({}, { title: 1, summary: 1, 'author.name': 1 })
     .toArray();
 
-  res.render('posts-list');
+  // eslint-disable-next-line object-shorthand
+  res.render('posts-list', { posts: posts });
 });
 
 router.get('/new-post', async (req, res) => {
