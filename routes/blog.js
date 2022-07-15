@@ -54,8 +54,16 @@ router.get('/posts/:id', async (req, res) => {
   if (!post) {
     return res.status(404).render('404');
   }
-  // eslint-disable-next-line object-shorthand
-  res.render('post-detail', { post: post });
+
+  post.humanReadableDate = post.date.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'number',
+  });
+  post.date = post.date.toISOString();
+
+  res.render('post-detail', { post });
 });
 
 module.exports = router;
