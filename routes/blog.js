@@ -59,7 +59,7 @@ router.get('/posts/:id', async (req, res) => {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'number',
+    day: 'numeric',
   });
   post.date = post.date.toISOString();
 
