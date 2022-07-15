@@ -47,4 +47,15 @@ router.post('/posts', async (req, res) => {
   res.redirect('/posts');
 });
 
+router.get('/posts/:id', async (req, res) => {
+  const postId = req.params.id;
+  const post = await db.getDB().collection('posts').findOne({ _id: new ObjectId(postId) }, { summary: 0 });
+
+  if (!post) {
+    return res.status(404);
+  }
+  // eslint-disable-next-line object-shorthand
+  res.render('post-detail', { post: post });
+});
+
 module.exports = router;
