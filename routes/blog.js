@@ -74,7 +74,8 @@ router.get('/posts/:id/edit', async (req, res) => {
     return res.status(404).render('404');
   }
 
-  res.render('');
+  // eslint-disable-next-line object-shorthand
+  res.render('update-post', { post: post });
 });
 
 module.exports = router;
