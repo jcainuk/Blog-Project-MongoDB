@@ -12,11 +12,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/posts', async (req, res) => {
-  const posts = await db
-    .getDB()
-    .collection('posts')
-    .find({}, { title: 1, summary: 1, 'author.name': 1 })
-    .toArray();
+  const posts = await db.getDB().collection('posts').find({}, { title: 1, summary: 1, 'author.name': 1 }).toArray();
 
   // eslint-disable-next-line object-shorthand
   res.render('posts-list', { posts: posts });
