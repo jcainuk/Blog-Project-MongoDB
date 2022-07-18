@@ -27,18 +27,9 @@ router.get('/new-post', async (req, res) => {
   res.render('create-post', { authors: authors });
 });
 
-router.post('/posts', async (req, res, next) => {
-  let authorId = req.body.author;
-
-  try {
-    authorId = new ObjectId(authorId);
-  } catch (error) {
-    return next(error);
-  }
-
-  const author = await db
-    .getDB().collection('authors')
-    .findOne({ _id: authorId });
+router.post('/posts', async (req, res) => {
+  const authorId = new ObjectId(req.body.author);
+  const author = await db.getDB().collection('authors').findOne({ _id: authorId });
 
   const newPost = {
     title: req.body.title,
@@ -57,7 +48,7 @@ router.post('/posts', async (req, res, next) => {
 });
 
 router.get('/posts/:id', async (req, res, next) => {
-  const postId = req.params.id;
+  let postId = req.params.id;
 
   try {
     postId = new ObjectId(postId);
