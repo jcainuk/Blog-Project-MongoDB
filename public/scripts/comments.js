@@ -43,6 +43,9 @@ const saveComment = (event) => {
   fetch(`/posts/${postId}/comments`, {
     method: 'POST',
     body: JSON.stringify(comment),
+    headers: {
+      'Content-type': 'application/json',
+    },
   });
 };
 
