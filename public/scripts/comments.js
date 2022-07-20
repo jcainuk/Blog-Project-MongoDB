@@ -33,7 +33,7 @@ const fetchCommentsForPost = async () => {
 
 const saveComment = (event) => {
   event.preventDefault();
-  const postId = loadCommentsBtnElement.dataset.postid;
+  const postId = commentsFormElement.dataset.postid;
 
   const enteredTitle = commentTitleElement.value;
   const enteredText = commentTextElement.value;
