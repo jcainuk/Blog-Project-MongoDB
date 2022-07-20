@@ -33,11 +33,12 @@ const fetchCommentsForPost = async () => {
 
 const saveComment = (event) => {
   event.preventDefault();
+  const postId = loadCommentsBtnElement.dataset.postid;
 
   const enteredTitle = commentTitleElement.value;
   const enteredText = commentTextElement.value;
 
-  console.log(enteredTitle, enteredText);
+  fetch(`/posts/${postId}/comments`);
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
