@@ -1,6 +1,8 @@
 const loadCommentsBtnElement = document.getElementById('load-comments-btn');
 const commentsSectionElement = document.getElementById('comments');
 const commentsFormElement = document.querySelector('#comments-form form');
+const commentTitleElement = document.getElementById('title');
+const commentTextElement = document.getElementById('text');
 
 const createCommentsList = (comments) => {
   const commentListElement = document.createElement('ol');
@@ -29,7 +31,9 @@ const fetchCommentsForPost = async () => {
   commentsSectionElement.appendChild(commentsListElement);
 };
 
-const saveComment = () => {};
+const saveComment = (event) => {
+  event.preventDefault();
+};
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
 commentsFormElement.addEventListener('submit', saveComment);
