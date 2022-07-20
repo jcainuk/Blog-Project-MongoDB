@@ -105,4 +105,15 @@ router.post('/posts/:id/delete', async (req, res) => {
   res.redirect('/posts');
 });
 
+router.get('/posts/:id/comments', async (req, res) => {
+  const postId = new ObjectId(req.params.id);
+  const post = await db.getDb().collection('posts').findOne({ _id: postId });
+  const comments = await db
+    .getDb()
+    .collection('comments')
+    .find({ postId }).toArray();
+
+  return res.render('post-detail', { post, comments });
+});
+
 module.exports = router;
