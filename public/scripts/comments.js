@@ -5,7 +5,7 @@ const fetchCommentsForPost = async () => {
 
   const response = await fetch(`/posts/${postId}/comments`);
 
-  const data = await response.json();
+  const responseData = await response.json();
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
