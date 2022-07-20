@@ -33,6 +33,11 @@ const fetchCommentsForPost = async () => {
 
 const saveComment = (event) => {
   event.preventDefault();
+
+  const enteredTitle = commentTitleElement.value;
+  const enteredText = commentTextElement.value;
+
+  console.log(enteredTitle, enteredText);
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
