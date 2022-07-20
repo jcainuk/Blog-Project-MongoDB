@@ -31,7 +31,7 @@ const fetchCommentsForPost = async () => {
   commentsSectionElement.appendChild(commentsListElement);
 };
 
-const saveComment = (event) => {
+const saveComment = async (event) => {
   event.preventDefault();
   const postId = commentsFormElement.dataset.postid;
 
@@ -40,13 +40,14 @@ const saveComment = (event) => {
 
   const comment = { title: enteredTitle, text: enteredText };
 
-  fetch(`/posts/${postId}/comments`, {
+  const response = await fetch(`/posts/${postId}/comments`, {
     method: 'POST',
     body: JSON.stringify(comment),
     headers: {
       'Content-type': 'application/json',
     },
   });
+  fetchCommentsForPost();
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
