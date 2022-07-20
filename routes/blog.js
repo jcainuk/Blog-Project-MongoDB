@@ -109,11 +109,10 @@ router.post('/posts/:id/delete', async (req, res) => {
 router.get('/posts/:id/comments', async (req, res) => {
   const postId = new ObjectId(req.params.id);
 
-  const comments = await db
-    .getDb()
+  const comments = await db.getDB()
     .collection('comments')
-    // eslint-disable-next-line object-shorthand
-    .find({ postId: postId }).toArray();
+
+    .find({ postId }).toArray();
 
   res.json(comments);
 });
