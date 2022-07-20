@@ -1,4 +1,5 @@
 const loadCommentsBtnElement = document.getElementById('load-comments-btn');
+const commentsSectionElement = document.getElementById('comments');
 
 const fetchCommentsForPost = async () => {
   const postId = loadCommentsBtnElement.dataset.postid;
