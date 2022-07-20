@@ -125,7 +125,7 @@ router.post('/posts/:id/comments', async (req, res) => {
     text: req.body.text,
   };
   await db.getDB().collection('comments').insertOne(newComment);
-  res.redirect(`/posts/${req.params.id}`);
+  res.json({ message: 'Comment added!' });
 });
 
 module.exports = router;
