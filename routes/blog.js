@@ -73,7 +73,8 @@ router.get('/posts/:id', async (req, res, next) => {
   });
   post.date = post.date.toISOString();
 
-  res.render('post-detail', { post });
+  // eslint-disable-next-line object-shorthand
+  res.render('post-detail', { post: post, comments: null });
 });
 
 router.get('/posts/:id/edit', async (req, res) => {
