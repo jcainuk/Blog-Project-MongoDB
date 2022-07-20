@@ -116,4 +116,15 @@ router.get('/posts/:id/comments', async (req, res) => {
   return res.render('post-detail', { post, comments });
 });
 
+router.post('/posts/:id/comments', async (req, res) => {
+  const postId = new ObjectId(req.params.id);
+  const newComment = {
+    postId,
+    title: req.body.title,
+    text: req.body.text,
+  };
+  await db.getDb().collection('comments').insertOne(newComment);
+  res.redirect(`/posts/${req.params.id}`);
+});
+
 module.exports = router;
