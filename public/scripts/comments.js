@@ -29,4 +29,7 @@ const fetchCommentsForPost = async () => {
   commentsSectionElement.appendChild(commentsListElement);
 };
 
+const saveComment = () => {};
+
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
+commentsFormElement.addEventListener('submit', saveComment);
