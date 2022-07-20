@@ -38,7 +38,12 @@ const saveComment = (event) => {
   const enteredTitle = commentTitleElement.value;
   const enteredText = commentTextElement.value;
 
-  fetch(`/posts/${postId}/comments`);
+  const comment = { title: enteredTitle, text: enteredText };
+
+  fetch(`/posts/${postId}/comments`, {
+    method: 'POST',
+    body: JSON.stringify(comment),
+  });
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
