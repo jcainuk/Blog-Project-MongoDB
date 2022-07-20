@@ -1,5 +1,6 @@
 const loadCommentsBtnElement = document.getElementById('load-comments-btn');
 const commentsSectionElement = document.getElementById('comments');
+const commentsFormElement = document.querySelector('#comments-form form');
 
 const createCommentsList = (comments) => {
   const commentListElement = document.createElement('ol');
