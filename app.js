@@ -24,6 +24,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
+
+// Parse JSON data
+app.use(express.json());
+
 // Serve static files (e.g. CSS files)
 app.use(express.static('public'));
 
