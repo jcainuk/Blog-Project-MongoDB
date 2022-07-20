@@ -124,7 +124,7 @@ router.post('/posts/:id/comments', async (req, res) => {
     title: req.body.title,
     text: req.body.text,
   };
-  await db.getDb().collection('comments').insertOne(newComment);
+  await db.getDB().collection('comments').insertOne(newComment);
   res.redirect(`/posts/${req.params.id}`);
 });
 
