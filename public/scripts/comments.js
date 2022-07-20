@@ -1,3 +1,7 @@
 const loadCommentsBtnElement = document.getElementById('load-comments-btn');
 
-loadCommentsBtnElement.addEventListener('click', () => {});
+const fetchCommentsForPost = () => {
+  fetch('/posts/.../comments');
+};
+
+loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
