@@ -23,15 +23,26 @@ const createCommentsList = (comments) => {
 
 const fetchCommentsForPost = async () => {
   const postId = loadCommentsBtnElement.dataset.postid;
-  const response = await fetch(`/posts/${postId}/comments`);
-  const responseData = await response.json();
+  try {
 
-  if (responseData && responseData.length > 0) {
-    const commentsListElement = createCommentsList(responseData);
-    commentsSectionElement.innerHTML = '';
-    commentsSectionElement.appendChild(commentsListElement);
-  } else {
-    commentsSectionElement.firstElementChild.textContent = 'We could not find any comments. Maybe add one?';
+
+    const response = await fetch(`/posts/${postId}/comments`);
+  
+    if(!response.ok){
+      alert('Fetching comments failed!')
+      return;
+    }
+    const responseData = await response.json();
+  
+    if (responseData && responseData.length > 0) {
+      const commentsListElement = createCommentsList(responseData);
+      commentsSectionElement.innerHTML = '';
+      commentsSectionElement.appendChild(commentsListElement);
+    } else {
+      commentsSectionElement.firstElementChild.textContent = 'We could not find any comments. Maybe add one?';
+    }
+  } catch (error){
+    alert('Getting comments failed!')
   }
 };
 
