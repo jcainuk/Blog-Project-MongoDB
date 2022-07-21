@@ -51,7 +51,12 @@ const saveComment = async (event) => {
       'Content-type': 'application/json',
     },
   });
-  fetchCommentsForPost();
+
+  if (response.ok) {
+    fetchCommentsForPost();
+  } else {
+    alert('Could not send comment!');
+  }
 };
 
 loadCommentsBtnElement.addEventListener('click', fetchCommentsForPost);
