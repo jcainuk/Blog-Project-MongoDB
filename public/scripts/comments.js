@@ -44,18 +44,22 @@ const saveComment = async (event) => {
 
   const comment = { title: enteredTitle, text: enteredText };
 
-  const response = await fetch(`/posts/${postId}/comments`, {
-    method: 'POST',
-    body: JSON.stringify(comment),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
+  try {
+    const response = await fetch(`/posts/${postId}/comments`, {
+      method: 'POST',
+      body: JSON.stringify(comment),
+      headers: {
+        'Content-type': 'application/json',
+      },
 
-  if (response.ok) {
-    fetchCommentsForPost();
-  } else {
-    alert('Could not send comment!');
+      if (response.ok) {
+        fetchCommentsForPost();
+      } else {
+        alert('Could not send comment!');
+      }
+    });
+  } catch (error){
+    alert('Could not send request - maybe try again later!')
   }
 };
 
